@@ -12,19 +12,20 @@
     <h1>Countries</h1>
     <h4>Select your favorite country from the list:</h4>
         
-        <form>
+        <form v-on:submit.prevent="savedCountry">
          <select v-model="selectedCountry">
             <option value="">select one</option>
             <option v-for="country in countries" v-bind:value="country">
                 {{ country.name }}
             </option>
         </select>
+        <br>
         <label for="saved-country">Your favorite country:</label>
         <input type="submit" value="Save country">
     
-            <h1 v-if="selectedCountry">Country: {{ selectedCountry.name }} </h1>
-            <h2 v-if="selectedCountry">Capital: {{ selectedCountry.capital }}</h2>
-            <h2 v-if="selectedCountry">Flag:</h2>
+            <h1 id="saved-country" v-if="selectedCountry">Country: {{ selectedCountry.name }} </h1>
+            <h2 id="saved-country" v-if="selectedCountry">Capital: {{ selectedCountry.capital }}</h2>
+            <h2 id="saved-country" v-if="selectedCountry">Flag:</h2>
         <img v-if="selectedCountry" v-bind:src="selectedCountry.flag">
 
       
